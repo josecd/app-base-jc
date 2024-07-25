@@ -1,0 +1,53 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.14);
+  box-sizing: border-box;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 10px;
+  ul {
+    margin-left: 0;
+    list-style: none;
+    li {
+      text-align: center;
+      i {
+        font-size: 20px;
+      }
+    }
+  }
+
+}
+.toolbar {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.14);
+  background: white;
+}
+
+.mat-toolbar.mat-primary {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.14);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.sidenav-scroll-wrapper {
+  overflow: auto;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
+}
+
+.sidenav-content {
+  background-color: white;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+}
+
