@@ -51,7 +51,7 @@ export default class LoginComponent {
           user:value.response.user,
         }
         this._user.setUserToken(dataset)
-        this.router.navigate(['/home']);
+        this.router.navigate(['/dashboard']);
       },
       error: (err) => {
         console.error('err', err);
