@@ -12,6 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { AsyncPipe } from '@angular/common';
 import { UserService } from '../../shared/services/user.service';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-full',
@@ -29,6 +30,7 @@ import { UserService } from '../../shared/services/user.service';
     RouterLinkActive,
     RouterOutlet,
     MatMenuModule,
+    MatExpansionModule
   ]
 })
 export class FullComponent implements OnInit {
@@ -48,9 +50,18 @@ export class FullComponent implements OnInit {
 
   ngOnInit(): void {
     this.name = 'Nombre';
-    this.listMenu = [
-      { title: 'Home', path: '/home' },
-      { title: 'Usuarios', path: '/usuarios' },
+    this.listMenu =[
+      { title: 'Dashboard', path: '/dashboard', icon:"home" },
+      { title: 'Adiministración', path: '/users',
+        icon:"group",
+        children: [
+        { title: 'Usuarios', path: '/usuarios', icon:"person" },
+        { title: 'Empresas', path: '/empresas', icon:"apartment" },
+        { title: 'Roles', path: '/roles', icon:"supervisor_account" },
+        { title: 'Permisos', path: '/permisos', icon:"manage_accounts" },
+        { title: 'Modulos', path: '/modulos', icon:"view_module" },
+      ]},
+      { title: 'Settings', path: '/settings', icon:"settings" }
     ];
   }
   logout() {

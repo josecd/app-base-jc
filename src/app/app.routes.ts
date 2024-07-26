@@ -11,7 +11,8 @@ export const routes: Routes = [
     canActivate:[authGuard],
     children: [
       { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'home',     loadChildren: () => import('./features/home/dahboard/dashboard.routes')},
+      { path: 'dashboard',     loadChildren: () => import('./features/home/dahboard/dashboard.routes')},
+      { path: 'usuarios',     loadChildren: () => import('./features/users/users.routes')},
     ]
   },
   {
