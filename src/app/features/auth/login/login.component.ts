@@ -39,8 +39,6 @@ export default class LoginComponent {
 
    public async submit() {
     this.submitStatus = true;
-    console.log("form",this.loginForm.value);
-
     if (this.loginForm.invalid) return;
     this._swall.showLoading();
     this._authService.login(this.loginForm.value).subscribe({

@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./dahboard.component'),
+    loadComponent: () => import('./dahboard/dahboard.component'),
   },
 
 ];

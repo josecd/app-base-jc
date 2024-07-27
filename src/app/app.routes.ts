@@ -10,9 +10,10 @@ export const routes: Routes = [
     component: FullComponent,
     canActivate:[authGuard],
     children: [
-      { path: '', redirectTo: '/home', pathMatch: 'full' },
-      { path: 'dashboard',     loadChildren: () => import('./features/home/dahboard/dashboard.routes')},
+      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      { path: 'dashboard',     loadChildren: () => import('./features/home/dashboard.routes')},
       { path: 'usuarios',     loadChildren: () => import('./features/users/users.routes')},
+      { path: 'modulos',     loadChildren: () => import('./features/modules/module.routes')},
     ]
   },
   {
