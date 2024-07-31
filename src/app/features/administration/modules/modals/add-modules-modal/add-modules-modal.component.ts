@@ -5,7 +5,7 @@ import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import { AddModuleComponent } from '../../components/add-module/add-module.component';
 import { Subscription } from 'rxjs';
 import { ModulesService } from '../../services/modules.service';
-import { SwallService } from '../../../../shared/services/swall.service';
+import { SwallService } from '../../../../../shared/services/swall.service';
 
 @Component({
   selector: 'app-add-modules-modal',

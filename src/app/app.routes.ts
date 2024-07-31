@@ -13,7 +13,9 @@ export const routes: Routes = [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       { path: 'dashboard',     loadChildren: () => import('./features/home/dashboard.routes')},
       { path: 'usuarios',     loadChildren: () => import('./features/users/users.routes')},
-      { path: 'modulos',     loadChildren: () => import('./features/modules/module.routes')},
+      { path: 'modulos',     loadChildren: () => import('./features/administration/modules/module.routes')},
+      { path: 'permisos',     loadChildren: () => import('./features/administration/permissions/permissions.routes')},
+
     ]
   },
   {
