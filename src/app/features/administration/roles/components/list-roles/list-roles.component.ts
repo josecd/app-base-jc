@@ -4,24 +4,24 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { PermissionService } from '../../services/permission.service';
-import { AddPermissionComponent } from '../../modals/add-permission/add-permission.component';
+import { RolesService } from '../../services/roles.service';
+import { AddRolComponent } from '../../modals/add-rol/add-rol.component';
 
 @Component({
-  selector: 'app-list-permissions',
+  selector: 'app-list-roles',
   standalone: true,
   imports: [
     MatIcon,
     MatButton
   ],
-  templateUrl: './list-permissions.component.html',
-  styleUrl: './list-permissions.component.scss'
+  templateUrl: './list-roles.component.html',
+  styleUrl: './list-roles.component.scss'
 })
-export default class ListPermissionsComponent {
+export default class ListRolesComponent {
   private subscriptions = new Subscription();
   readonly dialog = inject(MatDialog);
   readonly activatedRoute = inject(ActivatedRoute);
-  private _sevice = inject(PermissionService)
+  private _sevice = inject(RolesService)
   private route= inject(ActivatedRoute)
 
   public dataList:any = signal([])
@@ -78,7 +78,7 @@ export default class ListPermissionsComponent {
   }
 
   openAddModule() {
-    const dialogRef = this.dialog.open(AddPermissionComponent);
+    const dialogRef = this.dialog.open(AddRolComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.getAll()
