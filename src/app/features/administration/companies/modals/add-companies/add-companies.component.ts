@@ -2,12 +2,12 @@ import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModu
 import { Component, inject, signal } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SwallService } from '../../../../../shared/services/swall.service';
-import { PermissionService } from '../../services/permission.service';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { CompaniesService } from '../../services/companies.service';
 
 @Component({
-  selector: 'app-add-permission',
+  selector: 'app-add-companies',
   standalone: true,
   imports: [
     MatDialogModule,
@@ -15,24 +15,21 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     ReactiveFormsModule
   ],
-  templateUrl: './add-permission.component.html',
-  styleUrl: './add-permission.component.scss'
+  templateUrl: './add-companies.component.html',
+  styleUrl: './add-companies.component.scss'
 })
-export class AddPermissionComponent {
+export class AddCompaniesComponent {
   private subscriptions = new Subscription();
   private readonly fb = inject(FormBuilder);
   private readonly _swall = inject(SwallService);
-  private readonly _modules = inject(PermissionService);
+  private readonly _modules = inject(CompaniesService);
   public newModule: FormGroup;
   public formStatus:boolean= false;
-  public modules:any = signal([])
 
-  constructor(private dialogRef: MatDialogRef<AddPermissionComponent>) {
-    this.getAllModules()
+  constructor(private dialogRef: MatDialogRef<AddCompaniesComponent>) {
     this.newModule = this.fb.group({
       name: ['', Validators.required],
-      codename: ['', Validators.required],
-      content: ['', Validators.required],
+      domain: ['', Validators.required],
     });
   }
 
@@ -56,24 +53,6 @@ export class AddPermissionComponent {
     )
   }
 
-  getAllModules() {
-    this.subscriptions.add(
-      this._modules.getAllModules().subscribe({
-        next: (value: any) => {
-          if (value?.response?.length != 0) {
-            console.log("value?.response",value?.response);
-
-            this.modules.set(value.response)
-          } else {
-            this.modules.set([]);
-          }
-        },
-        error: (error: any) => {
-          console.error('error', error);
-        },
-      })
-    );
-  }
 
 
   get f(): { [key: string]: AbstractControl } {

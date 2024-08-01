@@ -16,6 +16,7 @@ export const routes: Routes = [
       { path: 'modulos',     loadChildren: () => import('./features/administration/modules/module.routes')},
       { path: 'permisos',     loadChildren: () => import('./features/administration/permissions/permissions.routes')},
       { path: 'roles',     loadChildren: () => import('./features/administration/roles/roles.routes')},
+      { path: 'empresas',     loadChildren: () => import('./features/administration/companies/companies.routes')},
 
     ]
   },

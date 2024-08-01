@@ -37,44 +37,19 @@
           </div>
 
           <div class="col-span-2">
-            <label for="url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Url inicio</label>
-            <input type="text" title="url" id="url"
-            formControlName="url"
+            <label for="domain" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dominio</label>
+            <input type="text" title="domain" id="domain"
+            formControlName="domain"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="/admin/lista" required="">
-              @if (formStatus && f['url'].errors) {
+              placeholder="example.com" required="">
+              @if (formStatus && f['domain'].errors) {
                 <div class="text-red-600 text-sm">
-                  @if (f['url'].errors['required']) {
-                  <div>La url es requerido.</div>
+                  @if (f['domain'].errors['required']) {
+                  <div>El dominio es requerido.</div>
                   }
                 </div>
               }
           </div>
-
-
-          <div class="col-span-2">
-            <label for="url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Permisos</label>
-            <mat-select multiple formControlName="permissions_id"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            >
-              @for (group of modules(); track group) {
-                <mat-optgroup [label]="group.name">
-                  @for (permision of group.permissions; track permision) {
-                    <mat-option [value]="permision.id">{{permision.name}}</mat-option>
-                  }
-                </mat-optgroup>
-              }
-            </mat-select>
-            @if (formStatus && f['permissions_id'].errors) {
-              <div class="text-red-600 text-sm">
-                @if (f['permissions_id'].errors['required']) {
-                <div>Los roles son requeridos.</div>
-                }
-              </div>
-            }
-          </div>
-
-
 
 
         </div>
