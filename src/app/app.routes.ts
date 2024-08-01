@@ -18,6 +18,8 @@ export const routes: Routes = [
       { path: 'roles',     loadChildren: () => import('./features/administration/roles/roles.routes')},
       { path: 'empresas',     loadChildren: () => import('./features/administration/companies/companies.routes')},
 
+      { path: 'catalogos',     loadChildren: () => import('./features/catalogs/catalogs.routes')},
+
     ]
   },
   {

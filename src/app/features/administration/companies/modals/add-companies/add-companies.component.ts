@@ -53,11 +53,12 @@ export class AddCompaniesComponent {
     )
   }
 
-
-
   get f(): { [key: string]: AbstractControl } {
     return this.newModule.controls;
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 
 }

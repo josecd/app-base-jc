@@ -16,8 +16,8 @@ export class CompaniesService {
     return this._http.post(`/companies/create`, data);
   }
 
-  public getAllModules(){
-    return this._http.get(`/modules/all-modules`);
-  }
 
+  public getAllTypes(){
+    return this._http.get(`/catalogs/types/all`);
+  }
 }

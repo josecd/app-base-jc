@@ -1,13 +1,14 @@
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component, inject, signal } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SwallService } from '../../../../../shared/services/swall.service';
-import { PermissionService } from '../../services/permission.service';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { SwallService } from 'app/shared/services/swall.service';
+import { CompaniesService } from 'app/features/administration/companies/services/companies.service';
+import { CatalogsService } from '../../services/catalogs.service';
 
 @Component({
-  selector: 'app-add-permission',
+  selector: 'app-add-catalogs',
   standalone: true,
   imports: [
     MatDialogModule,
@@ -15,32 +16,29 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     ReactiveFormsModule
   ],
-  templateUrl: './add-permission.component.html',
-  styleUrl: './add-permission.component.scss'
+  templateUrl: './add-catalogs.component.html',
+  styleUrl: './add-catalogs.component.scss'
 })
-export class AddPermissionComponent {
+export class AddCatalogsComponent {
   private subscriptions = new Subscription();
   private readonly fb = inject(FormBuilder);
   private readonly _swall = inject(SwallService);
-  private readonly _modules = inject(PermissionService);
+  private readonly _modules = inject(CatalogsService);
   public newModule: FormGroup;
   public formStatus:boolean= false;
-  public modules:any = signal([])
+  public types:any = signal([])
 
-  constructor(private dialogRef: MatDialogRef<AddPermissionComponent>) {
-    this.getAllModules()
+  constructor(private dialogRef: MatDialogRef<AddCatalogsComponent>) {
+    this.getAllTypes()
     this.newModule = this.fb.group({
       name: ['', Validators.required],
-      codename: ['', Validators.required],
-      content: ['', Validators.required],
+      type: ["",Validators.required]
     });
   }
 
   public submit(){
     this.formStatus = true
     if (this.newModule.invalid) return
-    console.log("form", this.newModule.value);
-
     this.subscriptions.add(
       this._modules.new(this.newModule.value).subscribe({
         next: (value: any) => {
@@ -56,16 +54,15 @@ export class AddPermissionComponent {
     )
   }
 
-  getAllModules() {
+  getAllTypes() {
     this.subscriptions.add(
-      this._modules.getAllModules().subscribe({
+      this._modules.getTypes().subscribe({
         next: (value: any) => {
           if (value?.response?.length != 0) {
-            console.log("value?.response",value?.response);
-
-            this.modules.set(value.response)
+            console.log("types----",value?.response);
+            this.types.set(value.response)
           } else {
-            this.modules.set([]);
+            this.types.set([]);
           }
         },
         error: (error: any) => {
@@ -74,7 +71,6 @@ export class AddPermissionComponent {
       })
     );
   }
-
 
   get f(): { [key: string]: AbstractControl } {
     return this.newModule.controls;

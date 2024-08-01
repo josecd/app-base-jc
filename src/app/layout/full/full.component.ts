@@ -61,6 +61,12 @@ export class FullComponent implements OnInit {
         { title: 'Permisos', path: '/permisos', icon:"manage_accounts" },
         { title: 'Modulos', path: '/modulos', icon:"view_module" },
       ]},
+      { title: 'Catalogos', path: '/catalogos',
+        icon:"group",
+        children: [
+        { title: 'Tipos', path: '/catalogos/tipos', icon:"person" },
+        { title: 'Catalogos', path: '/catalogos/lista', icon:"apartment" },
+      ]},
       { title: 'Settings', path: '/settings', icon:"settings" }
     ];
   }
