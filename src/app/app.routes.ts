@@ -12,7 +12,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       { path: 'dashboard',     loadChildren: () => import('./features/home/dashboard.routes')},
-      { path: 'usuarios',     loadChildren: () => import('./features/users/users.routes')},
+      { path: 'usuarios',     loadChildren: () => import('./features/administration/users/users.routes')},
       { path: 'modulos',     loadChildren: () => import('./features/administration/modules/module.routes')},
       { path: 'permisos',     loadChildren: () => import('./features/administration/permissions/permissions.routes')},
       { path: 'roles',     loadChildren: () => import('./features/administration/roles/roles.routes')},
